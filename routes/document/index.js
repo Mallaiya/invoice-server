@@ -1,6 +1,18 @@
 module.exports = (data) => {
-    return `
 
+    let tableData = "";
+    for(let i=0;i<data.invoiceDataItem.length;i++){
+        tableData+=(` <tr>
+            <td>${i+1}</td>
+            <td>${data.invoiceDataItem[i].description}</td>
+            <td>${data.invoiceDataItem[i].quantity}</td>
+            <td>${data.invoiceDataItem[i].unitPrice}</td>
+            <td>${data.invoiceDataItem[i].total}</td></tr>`)
+         
+    }
+    console.log(tableData);
+    return `
+        
     <!DOCTYPE html>
     <html lang="en">
        <head>
@@ -84,19 +96,19 @@ module.exports = (data) => {
                 resize: none;
                 overflow: hidden;
                 width: 100%;   
-                line-height: 10px;
+                line-height: 20px;
                 font-family: "Helvetica Neue",arial;
                 border: 0;
-                line-height: 20px;
                 font-size: 10px;
                 margin: 25px 0px 10px 0px;
-                height: 100px;
+                height: 140px;
                 display: block;
             }
             
             .greeting{
                 margin: 20px 0 0px 0;
                 padding-bottom: 20px;
+                line-height: 10px;
                 height: 100px;    
             }
     
@@ -111,6 +123,11 @@ module.exports = (data) => {
                 border-bottom: none;
                 border-collapse: collapse;
                 font-size: 10px;
+                
+            }
+
+            .invoiceFormRow8 table input {
+                padding: 1px 0;
             }
     
             .invoiceFormRow8 table, .invoiceFormRow8 table tfoot tr{
@@ -237,19 +254,19 @@ module.exports = (data) => {
                             <thead>
                                 <tr>
                                     <th class = "tab-col-1">
-                                        <input type ="text" class = "inp-col-head"  value = "#"/>
+                                        <input type ="text" class = "inp-col-head"  value = "${data.slNo}"/>
                                     </th>
                                     <th class="tab-col-2">
-                                        <input type ="text" class = "inp-col-head" value = "Item Description"/>
+                                        <input type ="text" class = "inp-col-head" value = "${data.description}"/>
                                     </th>
                                     <th class = "tab-col-3" >
-                                        <input type ="text" class = "inp-col-head" value = "Quantity"/>
+                                        <input type ="text" class = "inp-col-head" value = "${data.quantity}"/>
                                     </th>
                                     <th class = "tab-col-4">
-                                        <input type ="text" class = "inp-col-head" value = "Unit price (€)"/>
+                                        <input type ="text" class = "inp-col-head" value = "${data.unitPrice}"/>
                                     </th>
                                     <th class = "tab-col-5">
-                                        <input type ="text" class = "inp-col-head" value = "Total (€)"/>
+                                        <input type ="text" class = "inp-col-head" value = "${data.total}"/>
                                     </th>
                                 </tr>
                             </thead>    
@@ -277,30 +294,31 @@ module.exports = (data) => {
                                         </tr>
                                     })
                                 } -->
+                                ${tableData}
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <td colSpan="4">
-                                        <input type ="text" class = "inp-col" name = "subTotal" value = "Subtotal"/>
+                                        <input type ="text" class = "inp-col" name = "subTotal" value = "${data.subTotal}"/>
                                     </td>
                                     <td colSpan="1">
-                                        <input type ="text" class = "inp-col not-allowed" disabled  value = "5000.00"/>    
+                                        <input type ="text" class = "inp-col not-allowed" disabled  value = "${data.subTotalValue}"/>    
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colSpan="4">
-                                        <input type ="text" class = "inp-col salesTax" value = "Sales Tax" />
+                                        <input type ="text" class = "inp-col salesTax" value = "${data.salesTax}" />
                                     </td>
                                     <td colSpan="1">
-                                        <input type ="text" class = "inp-col salesTaxValue not-allowed" disabled value = "0.00"/>    
+                                        <input type ="text" class = "inp-col salesTaxValue not-allowed" disabled value = "${data.salesTaxValue}"/>    
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colSpan="4">
-                                        <input type ="text" class = "inp-col" value = "Total"/>
+                                        <input type ="text" class = "inp-col" value = "${data.totalAmount}"/>
                                     </td>
                                     <td colSpan="1">
-                                        <input type ="text" class = "inp-col not-allowed" disabled value = "5000.0"/>    
+                                        <input type ="text" class = "inp-col not-allowed" disabled value = "${data.totalAmountValue}"/>    
                                     </td>
                                 </tr>
                             </tfoot>
@@ -317,7 +335,6 @@ module.exports = (data) => {
        </body>
     </html>    
  
-   
-             
+                 
      `
 }

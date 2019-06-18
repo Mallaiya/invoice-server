@@ -141,17 +141,11 @@ users.get('/fetch-pdf', (req, res) => {
 users.post('/invoice-add', (req, res) => {
   let currentDate = new Date();
   let date = currentDate.getDate();
-  if(date < 10){
-    date = '0' + date;
-  }
+  
   let month = currentDate.getMonth(); 
-  if(month < 10){
-   month = '0' + month;
-  }
+  
   let year = currentDate.getFullYear();
-  if(year < 10) {
-    year = '0' + year;
-  }
+  
   let hour = currentDate.getHours().toString();
   if(hour<10){
     hour = '0' + hour;
