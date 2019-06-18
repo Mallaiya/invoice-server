@@ -245,7 +245,7 @@ users.post('/send-mail', (req, res) => {
     service: 'gmail',
     auth: {
       user: 'mallaiya@codingmart.com',
-      pass: 'Ksrcecse@123'
+      pass: ''
     }
   });
 
