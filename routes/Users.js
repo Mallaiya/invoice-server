@@ -116,6 +116,14 @@ users.post('/getphoto', (req, res) => {
 })
 
 users.post('/create-pdf', (req, res) => {
+  //console.log(req.body.invoiceNumber)
+  pdf.create(pdfTemplate(req.body), {}).toFile(`${__dirname}/files/`+req.body.invoiceNumber+".pdf", (err) => {
+    if(err) {
+      return console.log(err);
+    }
+    console.log(req.body)
+    
+  });
   pdf.create(pdfTemplate(req.body), {}).toFile(`${__dirname}/result.pdf`, (err) => {
     if(err) {
       return console.log(err);
@@ -128,11 +136,12 @@ users.post('/create-pdf', (req, res) => {
   //   console.log(res); // { filename: '/app/businesscard.pdf' }
   // });  
 
-})
+});
 
 users.get('/fetch-pdf', (req, res) => {
   // let dir = `${__dirname}`;
   // dir = dir.substr(0,21);
+  console.log(req.query.invoiceNumber);
   res.sendFile(`${__dirname}/result.pdf`) 
 })
 
@@ -227,42 +236,40 @@ users.post('/invoice-remove', (req, res) => {
 })
 
 
-// users.post('/send-mail', (req, res) => {
-//   const output =  `
-//     <p>Hi I am checking mail</p>
-//   `;
-//   let transporter = nodemailer.createTransport({
-//     host: "smtp.ethereal.email",
-//     port: 587,
-//     secure: false, // true for 465, false for other ports
-//     auth: {
-//       user: 'sylvia79@ethereal.email', // generated ethereal user
-//       pass: 'U9STqvQzt45vGsRPxE' // generated ethereal password
-//     }
-//   });
+users.post('/send-mail', (req, res) => {
+  const output =  `
+    <p>Hi I am checking mail</p>
+  `;
+  let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'mallaiya@codingmart.com',
+      pass: 'Ksrcecse@123'
+    }
+  });
 
-//   // send mail with defined transport object
-//   let mailOptions = {
-//     from: '"Nodemailer Contact" <sylvia79@ethereal.email>', // sender address
-//     to: "mallaiyazap@gmail.com", // list of receivers
-//     subject: "Node Mail", // Subject line
-//     text: "Checking node mail", // plain text body
-//     html: output // html body
-//   };
+  // send mail with defined transport object
+  let mailOptions = {
+    from: '"Mallaiya" <mallaiya@codingmart.email>', // sender address
+    to: "selvam@codingmart.com, mallaiyazap@gmail.com", // list of receivers
+    subject: "Node Mail", // Subject line
+    text: "Checking node mail", // plain text body
+    html: output // html body
+  };
   
-//   transporter.sendMail(mailOptions, (error, info) => {
-//     if(error) {
-//       return console.log(error);
-//     }
+  transporter.sendMail(mailOptions, (error, info) => {
+    if(error) {
+      return console.log(error);
+    }
   
 
-//   console.log("Message sent: %s", info.messageId);
-//   // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+  console.log("Message sent: %s", info.messageId);
+  // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
 
-//   // Preview only available when sending through an Ethereal account
-//   console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-//   })
-// })
+  // Preview only available when sending through an Ethereal account
+  console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+  })
+})
 
 
 module.exports = users
