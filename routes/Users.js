@@ -237,8 +237,9 @@ users.post('/invoice-remove', (req, res) => {
 
 
 users.post('/send-mail', (req, res) => {
-  const output =  `
-    <p>Hi I am checking mail</p>
+  console.log(req.body.invoiceName);
+  let output =  `
+    <p>${req.body.mailContent}</p>
   `;
   let transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -250,12 +251,20 @@ users.post('/send-mail', (req, res) => {
 
   // send mail with defined transport object
   let mailOptions = {
-    from: '"Mallaiya" <mallaiya@codingmart.email>', // sender address
-    to: "selvam@codingmart.com, mallaiyazap@gmail.com", // list of receivers
-    subject: "Node Mail", // Subject line
-    text: "Checking node mail", // plain text body
-    html: output // html body
+    from: '"Mallaiya" <mallaiya@codingmart.com>', // sender address
+    to: `${req.body.receiversMailId}`, // list of receivers
+    subject: `${req.body.mailSubject}`, // Subject line
+    text: "", // plain text body
+    html: output, // html body
+    attachments: [
+      {
+          filename: req.body.invoiceName +'.pdf',                                         
+          path : `${__dirname}/files/`+req.body.invoiceName+`.pdf`,
+          contentType: 'application/pdf'
+      }]
   };
+
+  console.log(mailOptions)
   
   transporter.sendMail(mailOptions, (error, info) => {
     if(error) {
