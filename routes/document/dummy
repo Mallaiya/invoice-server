@@ -1,175 +1,242 @@
 module.exports = (data) => {
     return `
-
     <!DOCTYPE html>
     <html lang="en">
        <head>
           <meta charset="UTF-8">
           <style>
-    
-            body{
+            body, html {
                 width: 580px;
-                font-family: Arial, Helvetica, sans-serif;
-                background: url('paper.png');
-                background-size: cover;
-            }    
-            .row div{
-                display: inline-block;
-            }
-
-            .row div:nth-child(2){
-                float: right;
-            }
-
-            .companyName{
-                font-size: 12px;
-                font-weight: bold;
-            }
-    
-            .invoiceName{
-                font-size: 16px;
-                font-weight: bolder;
-            }
-    
-            .addressLine {
-                font-size: 10px;
-                text-transform: capitalize;
-            }
-            
-            .invoiceDate{
-                margin-top: 2px;
-            }
-            
-            .invoiceDate, .invoiceNumber, .poNumber{
-                font-size: 10px;
-                text-transform: capitalize;
-                font-size: 10px;
-            }
-    
-            .invoiceFormRow5{
-                margin-top: 5px;
-            }
-    
-            .phoneNumber, .mailId{
-                text-transform: lowercase;
-                font-size: 10px;
-                
-            }
-    
-            .clientName, .clientCompanyName{
-                text-transform: capitalize;
-                font-size: 10px;
-                font-weight: bold;
-            }
-    
-            hr {
-                background: #ddd;
-                color: #ddd;
-                clear: both;
-                float: none;
-                width: 100%;
-                height: 1px;
-                margin: 10px 0 0.5em;
-                border: none;
-            }
-    
-            textarea {
-                background : none;
-                border : 0;
-                outline : 0;
-                text-align: left;
-            }
-         
-            .invoiceContent{
-                resize: none;
-                overflow: hidden;
-                width: 100%;   
-                line-height: 10px;
                 font-family: "Helvetica Neue",arial;
-                border: 0;
-                line-height: 20px;
-                font-size: 10px;
-                margin: 25px 0px 10px 0px;
-                height: 100px;
-                display: block;
-            }
+            }          
+          .invoiceFormRow1 div{
+              display : inline-block;
+          }
+            .companyName {
+                float: left;
             
-            .greeting{
-                margin: 20px 0 0px 0;
-                padding-bottom: 20px;
-                height: 100px;    
+                font-family: Arial;
             }
-    
-            .invoiceFormRow8 table {
-                width: 100%;
+            .invoiceName{
+                float: right;     
             }
-    
-            .invoiceFormRow8 table th , .invoiceFormRow8 table tr, .invoiceFormRow8 table, .invoiceFormRow8 table td  {
-                border-left: 1px solid #ada9a9;
-                border-right: 1px solid #ada9a9;
-                border-top: none;
-                border-bottom: none;
-                border-collapse: collapse;
-                font-size: 10px;
+
+            .invoiceFormRow2 div{
+                display : inline-block;
             }
-    
-            .invoiceFormRow8 table, .invoiceFormRow8 table tfoot tr{
-                border-top: 1px solid #ada9a9;
-                border-bottom: 1px solid #ada9a9;
-            }
-    
-            .invoiceFormRow8 table tfoot tr td {
-                padding: 0;
-            }
-    
-            .invoiceFormRow8 table tfoot tr:last-child{
-                background: #b1b1b1;
-            }
-    
-            .tab-col-1{
-                width: 50px;
-                padding : 0;
-            }
+
+            .addressLine1{
+                float: left;
             
-            .tab-col-2{
-                width: 330px;
-                padding : 0;
+                font-family: Arial;
             }
-            
-            .tab-col-3{
-                width: 120px;
-                padding : 0;
-            }
-            
-            .tab-col-4{
-                width: 120px;
-                padding : 0;
-            }
-            
-            .tab-col-5{
-                width: 120px;
-                padding : 0;
-            }
-            
-            .inp-col, .inp-col-head{
-                width: 100%;
-                border: none;
-                outline: none;
-                text-indent: 10px;
-                background: none;
-                padding: 2px 0;
-                font-size: 10px;
+
+            .invoiceDate{
+                float: right;     
             }
     
-            .inp-col-head{
-                background: #b1b1b1;
-                text-transform: capitalize;   
-                font-size: 10px;
-            }
+    .row div input{
+     
+        font-family: "Helvetica Neue",arial,sans;
+        color: #222;
+        background: none;
+        border: none;
+    }
     
-            tbody tr:nth-child(even){
-                background: #eaeaea;
-            }
+    .row div input:focus{
+        outline: 0;
+        color: #000;
+        -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.1);
+    }
+    
+    
+    .left-align {
+        text-align: left;
+    }
+    
+    .left-align:focus{
+        background: -webkit-gradient(linear, left top, right top, from(rgba(255,255,100,0.5)), to(rgba(255,255,100,0.2)))!important;
+    }
+    
+    .right-align {
+        text-align: right;
+    }
+    
+    .right-align:focus{
+        background: -webkit-gradient(linear, right top, left top, from(rgba(255,255,100,0.5)), to(rgba(255,255,100,0.2)))!important;
+    }
+    
+    .addressLine {
+        font-size: 10px;
+        margin-bottom: 5px;
+        height: 15px;
+        text-transform: capitalize;
+    }
+    
+    .invoiceDate, .invoiceNumber, .poNumber{
+        height: 15px;
+        text-transform: capitalize;
+        font-size: 10px;
+    }
+    
+    .invoiceFormRow5{
+        margin-top: 10px;
+    }
+    
+    .phoneNumber, .mailId{
+        height: 16px;
+        text-transform: lowercase;
+        font-size: 10px;
+        margin-top: 4px;
+    }
+    
+    .clientName, .clientCompanyName{
+        height: 18px;
+        text-transform: capitalize;
+        font-size: 12px;
+        font-weight: bold;
+    }
+    
+    hr {
+        background: #ddd;
+        color: #ddd;
+        clear: both;
+        float: none;
+        width: 100%;
+        height: 1px;
+        margin: 25px 0 1.45em;
+        border: none;
+    }
+    
+    textarea {
+        background : none;
+        border : 0;
+        outline : 0;
+    }
+    
+    textarea:focus{
+        background: rgba(255,255,100,0.4)!important;
+        background: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,100,0.5)), to(rgba(255,255,100,0.1)))!important;
+        color: #000;
+        text-shadow: #fff 1px 1px;
+        -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.1);
+    }
+    
+    .invoiceContent{
+        resize: none;
+        overflow: hidden;
+        width: 100%;   
+        padding: 20px 0px 0px 0px;
+        line-height: 20px;
+        font-family: "Helvetica Neue",arial;
+        border: 0;
+        font-size: 11px;
+        margin: 0px auto;
+        height: 180px;
+        display: block;
+    }
+    
+    .greeting{
+        margin: 30px 0 150px 0;
+        padding-bottom: 20px;
+        height: 80px;    
+    }
+    
+    .invoiceFormRow8 table {
+        width: 100%;
+    }
+    .invoiceFormRow8 thead td input {
+        width: 100%;
+        margin: 0;
+    }
+    
+    .invoiceFormRow8 table th , .invoiceFormRow8 table tr, .invoiceFormRow8 table, .invoiceFormRow8 table td  {
+        border-left: 1.5px solid #ada9a9;
+        border-right: 1.5px solid #ada9a9;
+        border-top: none;
+        border-bottom: none;
+        border-collapse: collapse;
+    }
+    
+    .invoiceFormRow8 table, .invoiceFormRow8 table tfoot tr{
+        border-top: 1.5px solid #ada9a9;
+        border-bottom: 1.5px solid #ada9a9;
+    }
+    
+    .invoiceFormRow8 table tfoot tr td {
+        padding: 0;
+    }
+    .invoiceFormRow8 table tfoot tr input{
+        background: #dcdcdc;
+        font-weight: bold;
+        font-size: 12px;
+    }
+    
+    .invoiceFormRow8 table tfoot tr:last-child input{
+        background: #b1b1b1;
+    }
+    
+    .tab-col-1{
+        width: 50px;
+        padding : 0;
+    }
+    
+    .tab-col-2{
+        width: 330px;
+        padding : 0;
+    }
+    
+    .tab-col-3{
+        width: 120px;
+        padding : 0;
+    }
+    
+    .tab-col-4{
+        width: 120px;
+        padding : 0;
+    }
+    
+    .tab-col-5{
+        width: 120px;
+        padding : 0;
+    }
+    
+    .tab-col-5 .inp-col{
+        font-weight: bold;
+    }
+    
+    .not-allowed{
+        cursor: not-allowed;
+    }
+    
+    .not-allowed:disabled{
+        color: #000;
+    }
+    
+    
+    .inp-col, .inp-col-head{
+        width: 100%;
+        border: none;
+        outline: none;
+        text-indent: 10px;
+        background: none;
+        padding: 4px 0;
+        font-size: 12px;
+    }
+    
+    .inp-col:focus, .inp-col-head:focus, tfoot input:focus {
+        background: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,100,0.5)), to(rgba(255,255,100,0.1)))!important;
+    }
+    
+    .inp-col-head{
+        background: #b1b1b1;
+        text-transform: capitalize;
+        font-weight: bold;
+    }
+    
+    tbody tr:nth-child(even){
+        background: #eaeaea;
+    }
     
     
           </style>
@@ -186,43 +253,44 @@ module.exports = (data) => {
                    ${data.invoiceName}
                    </div>
                 </div>
+                <br/>
                 <div class = "row invoiceFormRow2">
-                   <div class = "addressLine">
+                   <div className ="addressLine1">
                    ${data.addressLine[0]}
                    </div>
-                   <div class = "invoiceDate">
+                   <div className = "invoiceDate>
                    ${data.invoiceDate}
                    </div>
                 </div>
                 <div class = "row invoiceFormRow3">
-                   <div class = "addressLine">
+                   <div>
                     ${data.addressLine[1]}
                    </div>
-                   <div class="invoiceNumber">
+                   <div>
                     ${data.invoiceNumber}
                    </div>
                 </div>
                 <div class = "row invoiceFormRow4">
-                   <div class = "addressLine">
-                   ${data.addressLine[2]}
+                   <div>
+                   ${data.addressLine[1]}
                    </div>
-                   <div class="poNumber">
+                   <div>
                    ${data.poNumber}
                    </div>
                 </div>
                 <div class = "row invoiceFormRow5">
-                   <div class="phoneNumber">
+                   <div>
                    ${data.phoneNumber}
                    </div>
-                   <div class="clientName">
+                   <div>
                    ${data.clientName}
                    </div>
                 </div>
                 <div class = "row invoiceFormRow6">
-                   <div class="mailId">
+                   <div>
                     ${data.mailId}
                    </div>
-                   <div class = "clientCompanyName">
+                   <div>
                    ${data.clientCompanyName}
                    </div>
                 </div>
@@ -237,19 +305,19 @@ module.exports = (data) => {
                             <thead>
                                 <tr>
                                     <th class = "tab-col-1">
-                                        <input type ="text" class = "inp-col-head"  value = "#"/>
+                                        <input type ="text" class = "inp-col-head" value= "#"/>
                                     </th>
                                     <th class="tab-col-2">
-                                        <input type ="text" class = "inp-col-head" value = "Item Description"/>
+                                        <input type ="text" class = "inp-col-head" value= "Item Description"/>    
                                     </th>
                                     <th class = "tab-col-3" >
-                                        <input type ="text" class = "inp-col-head" value = "Quantity"/>
+                                        <input type ="text" class = "inp-col-head" value= "Quantity"/>
                                     </th>
                                     <th class = "tab-col-4">
-                                        <input type ="text" class = "inp-col-head" value = "Unit price (€)"/>
+                                        <input type ="text" class = "inp-col-head" value= "Unit price (€)"/>
                                     </th>
                                     <th class = "tab-col-5">
-                                        <input type ="text" class = "inp-col-head" value = "Total (€)"/>
+                                        <input type ="text" class = "inp-col-head" value= "Total (€)"/>
                                     </th>
                                 </tr>
                             </thead>    
@@ -316,8 +384,6 @@ module.exports = (data) => {
           </div>
        </body>
     </html>    
- 
-   
-             
-     `
+
+      `
 }
