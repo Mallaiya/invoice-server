@@ -145,14 +145,14 @@ users.post('/create-pdf', (req, res) => {
     if(err) {
       return console.log(err);
     }
-    console.log(req.body)
+   // console.log(req.body)
     
   });
   pdf.create(pdfTemplate(req.body), {}).toFile(`${__dirname}/result.pdf`, (err) => {
     if(err) {
       return console.log(err);
     }
-    console.log(req.body)
+   // console.log(req.body)
     res.send(Promise.resolve());
   });
   // pdf.cr=eate(req.body, options).toFile('./businesscard.pdf', function(err, res) {
@@ -165,7 +165,7 @@ users.post('/create-pdf', (req, res) => {
 users.get('/fetch-pdf', (req, res) => {
   // let dir = `${__dirname}`;
   // dir = dir.substr(0,21);
-  console.log(req.query.invoiceNumber);
+  //console.log(req.query.invoiceNumber);
   res.sendFile(`${__dirname}/result.pdf`) 
 })
 
@@ -264,7 +264,7 @@ users.post('/invoice-remove', (req, res) => {
 
 //Mail transporter
 users.post('/send-mail', (req, res) => {
-  console.log(req.body.invoiceName);
+  // console.log(req.body.invoiceName);
   let output =  `
     <p>${req.body.mailContent}</p>
   `;
@@ -272,7 +272,7 @@ users.post('/send-mail', (req, res) => {
     service: 'gmail',
     auth: {
       user: 'mallaiya@codingmart.com',
-      pass: ''
+      pass: 'Ksrcecse@123'
     }
   });
 
@@ -353,7 +353,7 @@ users.post('/save-actions', (req, res) => {
     reason : req.body.reason
   }
   
-    console.log(reqData);
+   // console.log(reqData);
     Action.create(reqData)
     .then(data=> {
       res.send("success"); 
@@ -380,4 +380,30 @@ users.post('/save-actions', (req, res) => {
     })
   })
 
+
+  // users.post('/change-username', (req, res) => {
+  //   User.findOne({userName : req.body.newUserName})
+  //   .then(user => {
+  //     if(!user){
+  //       User.updateOne({emailId : req.body.emailId} , {
+  //         userName : req.body.newUserName
+  //       })
+  //       Invoice.updateAll({emailId : req.body.emailId} , {
+  //         userName : req.body.newUserName
+  //       })
+  //       .then(data => {
+  //         res.send("success");
+  //       })
+  //       .catch(err => {
+  //         res.send("error" + err);
+  //       })
+  //     }else{
+  //       res.send("available")
+  //     }
+  //   }).catch(err => {
+  //     res.send("error" +err);
+  //   })    
+  // })
 module.exports = users
+
+

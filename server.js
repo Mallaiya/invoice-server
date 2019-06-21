@@ -14,6 +14,12 @@ app.use(
     })
 );
 
+app.use(function (req, res, next){
+    res.header('Allow-Control-Allow-Origin',"*");
+    res.header('Allow-Control-Allow-Methods',"GET,PUT,POST,DELETE");
+    res.header('Allow-Control-Allow-Origin',"Content-Type");
+    next();
+});
 const mongoURI = "mongodb://localhost:27017/invoicedb";
 
 mongoose
